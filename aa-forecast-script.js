@@ -1,5 +1,6 @@
 import { getStatusText, convert12hTo24h, formatArrivalTime12h } from "./lib.js";
 
+// Airport wait time data (simulated - in production, this would come from APIs)
 const airportData = {
   DFW: {
     name: "Dallas/Fort Worth International Airport",
@@ -296,7 +297,7 @@ function updateProcessFlow() {
   });
   totalTime += adjustedWalkTime;
   
-  // Add buffer time
+  // Add buffer time (15 minutes recommended)
   const bufferTime = 15;
   steps.push({ name: 'Buffer Time (Recommended)', time: bufferTime, icon: 'fa-clock' });
   totalTime += bufferTime;
@@ -390,7 +391,13 @@ function renderBreakdown(steps) {
   breakdownList.appendChild(totalItem);
 }
 
+// Simulate real-time updates (in production, this would fetch from APIs)
 function fetchRealTimeData() {
-
+  // This would make API calls to:
+  // - Airport security wait time APIs
+  // - Airport operations APIs
+  // - Historical data for predictions
+  
+  // For now, we simulate with realistic variations
   updateWaitTimes();
 }
