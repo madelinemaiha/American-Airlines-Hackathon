@@ -1,625 +1,403 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --aa-red: #C8102E;
-  --aa-navy: #002244;
-  --aa-blue: #003366;
-  --aa-light-blue: #4A6FA5;
-  --bg-light: #F4F5F7;
-  --text-dark: #2D2D2D;
-  --text-light: #5C5C5C;
-  --success: #4A7C59;
-  --warning: #B8860B;
-  --danger: #8B3A3A;
-  --border: #D1D5DB;
-  --card-bg: #FFFFFF;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  font-family: 'Source Sans 3', Helvetica Neue, Arial, sans-serif;
-  background: var(--bg-light);
-  color: var(--text-dark);
-  line-height: 1.6;
-  min-height: 100vh;
-}
-
-/* Header */
-.aa-header {
-  background: var(--aa-navy);
-  color: white;
-  padding: 1.25rem 2rem;
-  box-shadow: var(--shadow);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.logo-section {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo-section i {
-  font-size: 2rem;
-}
-
-.logo-section h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.airport-selector {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.airport-selector label {
-  font-weight: 500;
-}
-
-.airport-selector select {
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  background: white;
-  color: var(--text-dark);
-  font-size: 0.95rem;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-/* Main Container */
-.main-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/* Top Section: Flight Form + Result Box */
-.top-section {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 2rem;
-  align-items: start;
-}
-
-/* Flight Input Section */
-.flight-input-section {
-  width: 100%;
-}
-
-.input-card {
-  background: var(--card-bg);
-  border-radius: 2px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.input-card h2 {
-  color: var(--aa-navy);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.input-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.checkbox-row {
-  grid-column: 1 / -1;
-  display: flex;
-  gap: 2rem;
-  align-items: flex-end;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.input-group label {
-  font-weight: 500;
-  color: var(--text-dark);
-  font-size: 0.9rem;
-}
-
-.input-group input,
-.input-group select {
-  padding: 0.6rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  font-size: 0.95rem;
-  transition: border-color 0.2s ease;
-}
-
-.time-picker {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.time-picker select {
-  padding: 0.6rem 0.5rem;
-  min-width: 0;
-}
-
-.time-picker #departure-hour {
-  width: 4rem;
-}
-
-.time-picker #departure-minute {
-  width: 4rem;
-}
-
-.time-picker #departure-ampm {
-  width: 4.5rem;
-}
-
-.time-separator {
-  font-weight: 600;
-  color: var(--text-dark);
-}
-
-.input-group input:focus,
-.input-group select:focus {
-  outline: none;
-  border-color: var(--aa-blue);
-}
-
-.checkbox-group label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  flex-direction: row;
-}
-
-.checkbox-group input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--aa-red);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.75rem;
-  border-radius: 2px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: #A80D26;
-}
-
-.btn-primary:active {
-  background: #8B0A1F;
-}
-
-/* Wait Times Section */
-.wait-times-section h2 {
-  color: var(--aa-navy);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.wait-times-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
-
-.wait-time-card {
-  background: var(--card-bg);
-  border-radius: 2px;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  transition: border-color 0.2s ease;
-}
-
-.wait-time-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--aa-navy);
-}
-
-.wait-time-card:hover {
-  border-color: var(--aa-light-blue);
-}
-
-.wait-time-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.wait-time-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  color: white;
-}
-
-.wait-time-icon.parking { background: #5B6B7C; }
-.wait-time-icon.shuttle { background: #6B7B8C; }
-.wait-time-icon.bag-check { background: #4A6FA5; }
-.wait-time-icon.security { background: #5B7A6B; }
-.wait-time-icon.walk { background: #6B7A8C; }
-.wait-time-icon.food { background: #7A6B5C; }
-.wait-time-icon.rental { background: #5B6A7A; }
-
-.wait-time-label {
-  font-weight: 600;
-  color: var(--text-dark);
-  font-size: 0.95rem;
-}
-
-.wait-time-display {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.wait-time-value {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: var(--aa-navy);
-  line-height: 1;
-}
-
-.wait-time-unit {
-  font-size: 1.25rem;
-  color: var(--text-light);
-  font-weight: 500;
-}
-
-.wait-time-status {
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 2px;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.wait-time-status.low {
-  background: #E8EDE8;
-  color: var(--success);
-}
-
-.wait-time-status.medium {
-  background: #F5EDE0;
-  color: var(--warning);
-}
-
-.wait-time-status.high {
-  background: #EDE4E4;
-  color: var(--danger);
-}
-
-.wait-time-update {
-  font-size: 0.75rem;
-  color: var(--text-light);
-  margin-top: 0.5rem;
-}
-
-/* Process Flow Section */
-.process-flow-section h2 {
-  color: var(--aa-navy);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.flow-map {
-  background: var(--card-bg);
-  border-radius: 2px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  min-height: 400px;
-}
-
-.flow-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.flow-step {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: var(--bg-light);
-  border-radius: 2px;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s ease;
-}
-
-.flow-step.active {
-  background: #E8EEF5;
-  border: 1px solid var(--aa-blue);
-}
-
-.flow-step-number {
-  width: 36px;
-  height: 36px;
-  border-radius: 2px;
-  background: var(--aa-navy);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  flex-shrink: 0;
-}
-
-.flow-step.active .flow-step-number {
-  background: var(--aa-red);
-}
-
-.flow-step-content {
-  flex: 1;
-}
-
-.flow-step-name {
-  font-weight: 600;
-  color: var(--text-dark);
-  margin-bottom: 0.25rem;
-}
-
-.flow-step-time {
-  font-size: 0.9rem;
-  color: var(--text-light);
-}
-
-.flow-step-arrow {
-  font-size: 1.25rem;
-  color: var(--text-light);
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
-.flow-step-arrow:last-child {
-  display: none;
-}
-
-.total-time-card {
-  background: var(--aa-navy);
-  border-radius: 2px;
-  padding: 2rem;
-  color: white;
-  box-shadow: var(--shadow);
-  border: 1px solid #001a33;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  height: fit-content;
-  position: relative;
-}
-
-.total-time-placeholder {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 34, 68, 0.9);
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  padding: 1.5rem;
-  z-index: 1;
-}
-
-.total-time-card.calculated .total-time-placeholder {
-  display: none;
-}
-
-.total-time-results {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  transition: filter 0.2s ease, opacity 0.2s ease;
-}
-
-.total-time-card:not(.calculated) .total-time-results {
-  filter: blur(3px);
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.total-time-display,
-.arrival-time-display {
-  text-align: center;
-}
-
-.total-label,
-.arrival-label {
-  display: block;
-  font-size: 0.9rem;
-  opacity: 0.9;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.total-value {
-  display: block;
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.arrival-value {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-/* Breakdown Section */
-.breakdown-section h2 {
-  color: var(--aa-navy);
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.breakdown-list {
-  background: var(--card-bg);
-  border-radius: 2px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.breakdown-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid var(--border);
-  transition: all 0.3s ease;
-}
-
-.breakdown-item:last-child {
-  border-bottom: none;
-}
-
-.breakdown-item:hover {
-  background: var(--bg-light);
-}
-
-.breakdown-item-name {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 500;
-}
-
-.breakdown-item-time {
-  font-weight: 600;
-  color: var(--aa-navy);
-  font-size: 1rem;
-}
-
-/* Footer */
-.aa-footer {
-  background: var(--aa-navy);
-  color: white;
-  text-align: center;
-  padding: 1.5rem 2rem;
-  margin-top: 4rem;
-  font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .top-section {
-    grid-template-columns: 1fr;
+import { getStatusText, convert12hTo24h, formatArrivalTime12h } from "./lib.js";
+
+// Airport wait time data (simulated - in production, this would come from APIs)
+const airportData = {
+  DFW: {
+    name: "Dallas/Fort Worth International Airport",
+    terminals: ['A', 'B', 'C', 'D', 'E'],
+    waitTimes: {
+      parking: { base: 5, variance: 3, status: 'low' },
+      shuttle: { base: 8, variance: 4, status: 'low' },
+      bagCheck: { base: 12, variance: 6, status: 'medium' },
+      security: { base: 15, variance: 10, status: 'medium' },
+      securityPrecheck: { base: 3, variance: 2, status: 'low' },
+      walk: { base: 10, variance: 5, status: 'low' },
+      food: { base: 8, variance: 5, status: 'low' },
+      rental: { base: 15, variance: 8, status: 'medium' }
+    }
+  },
+  CLT: {
+    name: "Charlotte Douglas International Airport",
+    terminals: ['A', 'B', 'C', 'D', 'E'],
+    waitTimes: {
+      parking: { base: 4, variance: 2, status: 'low' },
+      shuttle: { base: 7, variance: 3, status: 'low' },
+      bagCheck: { base: 10, variance: 5, status: 'low' },
+      security: { base: 18, variance: 12, status: 'medium' },
+      securityPrecheck: { base: 3, variance: 2, status: 'low' },
+      walk: { base: 8, variance: 4, status: 'low' },
+      food: { base: 7, variance: 4, status: 'low' },
+      rental: { base: 12, variance: 6, status: 'medium' }
+    }
+  },
+  MIA: {
+    name: "Miami International Airport",
+    terminals: ['D', 'E', 'F', 'G', 'H', 'J'],
+    waitTimes: {
+      parking: { base: 6, variance: 4, status: 'low' },
+      shuttle: { base: 10, variance: 5, status: 'medium' },
+      bagCheck: { base: 15, variance: 8, status: 'medium' },
+      security: { base: 20, variance: 15, status: 'high' },
+      securityPrecheck: { base: 4, variance: 3, status: 'low' },
+      walk: { base: 12, variance: 6, status: 'medium' },
+      food: { base: 10, variance: 6, status: 'medium' },
+      rental: { base: 18, variance: 10, status: 'high' }
+    }
+  },
+  PHX: {
+    name: "Phoenix Sky Harbor International Airport",
+    terminals: ['3', '4'],
+    waitTimes: {
+      parking: { base: 5, variance: 3, status: 'low' },
+      shuttle: { base: 8, variance: 4, status: 'low' },
+      bagCheck: { base: 11, variance: 6, status: 'low' },
+      security: { base: 14, variance: 9, status: 'medium' },
+      securityPrecheck: { base: 3, variance: 2, status: 'low' },
+      walk: { base: 9, variance: 5, status: 'low' },
+      food: { base: 8, variance: 5, status: 'low' },
+      rental: { base: 14, variance: 7, status: 'medium' }
+    }
+  },
+  ORD: {
+    name: "Chicago O'Hare International Airport",
+    terminals: ['1', '2', '3', '5'],
+    waitTimes: {
+      parking: { base: 6, variance: 4, status: 'low' },
+      shuttle: { base: 9, variance: 5, status: 'medium' },
+      bagCheck: { base: 13, variance: 7, status: 'medium' },
+      security: { base: 22, variance: 15, status: 'high' },
+      securityPrecheck: { base: 4, variance: 3, status: 'low' },
+      walk: { base: 11, variance: 6, status: 'medium' },
+      food: { base: 9, variance: 6, status: 'medium' },
+      rental: { base: 16, variance: 9, status: 'high' }
+    }
   }
+};
+
+// Wait time categories with icons and labels
+const waitTimeCategories = [
+  { id: 'parking', label: 'Parking/Walk to Terminal', icon: 'fa-car', color: 'parking' },
+  { id: 'shuttle', label: 'Airport Shuttle', icon: 'fa-bus', color: 'shuttle' },
+  { id: 'bagCheck', label: 'Bag Check', icon: 'fa-suitcase', color: 'bag-check' },
+  { id: 'security', label: 'Security Screening', icon: 'fa-shield-alt', color: 'security' },
+  { id: 'walk', label: 'Walk to Gate', icon: 'fa-walking', color: 'walk' },
+  { id: 'food', label: 'Food Lines', icon: 'fa-utensils', color: 'food' },
+  { id: 'rental', label: 'Car Rental', icon: 'fa-car-side', color: 'rental' }
+];
+
+let currentAirport = 'DFW';
+let currentWaitTimes = {};
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', () => {
+  initializeWaitTimes();
+  setupEventListeners();
+  setupTimePicker();
+  showResultPlaceholder();
+  updateWaitTimes();
+  setInterval(updateWaitTimes, 30000); // Update every 30 seconds
+});
+
+// Initialize wait times display
+function initializeWaitTimes() {
+  const grid = document.getElementById('wait-times-grid');
+  grid.innerHTML = '';
+  
+  waitTimeCategories.forEach(category => {
+    const card = createWaitTimeCard(category);
+    grid.appendChild(card);
+  });
 }
 
-@media (max-width: 768px) {
-  .main-container {
-    padding: 1rem;
+// Create a wait time card
+function createWaitTimeCard(category) {
+  const card = document.createElement('div');
+  card.className = 'wait-time-card';
+  card.id = `wait-time-${category.id}`;
+  
+  const time = getWaitTime(category.id);
+  const status = getWaitTimeStatus(category.id);
+  
+  card.innerHTML = `
+    <div class="wait-time-header">
+      <div class="wait-time-icon ${category.color}">
+        <i class="fas ${category.icon}"></i>
+      </div>
+      <div class="wait-time-label">${category.label}</div>
+    </div>
+    <div class="wait-time-display">
+      <span class="wait-time-value">${time}</span>
+      <span class="wait-time-unit">min</span>
+    </div>
+    <div class="wait-time-status ${status}">${getStatusText(status)}</div>
+    <div class="wait-time-update">Updated just now</div>
+  `;
+  
+  return card;
+}
+
+// Get wait time for a category
+function getWaitTime(categoryId) {
+  const airport = airportData[currentAirport];
+  if (!airport || !airport.waitTimes[categoryId]) return 0;
+  
+  const config = airport.waitTimes[categoryId];
+  const variance = (Math.random() - 0.5) * 2 * config.variance;
+  const time = Math.max(1, Math.round(config.base + variance));
+  
+  currentWaitTimes[categoryId] = time;
+  return time;
+}
+
+// Get wait time status
+function getWaitTimeStatus(categoryId) {
+  const airport = airportData[currentAirport];
+  if (!airport || !airport.waitTimes[categoryId]) return 'low';
+  
+  return airport.waitTimes[categoryId].status;
+}
+
+// Update all wait times
+function updateWaitTimes() {
+  waitTimeCategories.forEach(category => {
+    const card = document.getElementById(`wait-time-${category.id}`);
+    if (card) {
+      const time = getWaitTime(category.id);
+      const status = getWaitTimeStatus(category.id);
+      
+      card.querySelector('.wait-time-value').textContent = time;
+      card.querySelector('.wait-time-status').className = `wait-time-status ${status}`;
+      card.querySelector('.wait-time-status').textContent = getStatusText(status);
+      card.querySelector('.wait-time-update').textContent = 'Updated just now';
+    }
+  });
+}
+
+// Setup event listeners
+function setupEventListeners() {
+  // Airport selector
+  document.getElementById('airport-select').addEventListener('change', (e) => {
+    currentAirport = e.target.value;
+    updateWaitTimes();
+  });
+  
+  // Calculate button
+  document.getElementById('calculate-btn').addEventListener('click', calculateArrivalTime);
+}
+
+// Custom time picker: syncs hour/minute/AM-PM selects to hidden input (HH:mm)
+// Options are in numerical order (1-12, 00-55, AM then PM)
+function setupTimePicker() {
+  const hourSelect = document.getElementById('departure-hour');
+  const minuteSelect = document.getElementById('departure-minute');
+  const ampmSelect = document.getElementById('departure-ampm');
+  const hiddenInput = document.getElementById('departure-time');
+
+  function updateHiddenTime() {
+    const hourVal = hourSelect.value;
+    const minuteVal = minuteSelect.value;
+    const ampmVal = ampmSelect.value;
+
+    if (!hourVal || !minuteVal || !ampmVal) {
+      hiddenInput.value = '';
+    } else {
+      hiddenInput.value = convert12hTo24h(hourVal, minuteVal, ampmVal);
+    }
+    hiddenInput.dispatchEvent(new Event('change'));
   }
 
-  .input-grid {
-    grid-template-columns: 1fr;
+  [hourSelect, minuteSelect, ampmSelect].forEach(el => {
+    el.addEventListener('change', updateHiddenTime);
+  });
+}
+
+// Show placeholder state for result box (before Calculate is pressed)
+function showResultPlaceholder() {
+  const card = document.getElementById('total-time-card');
+  if (card) card.classList.remove('calculated');
+  const flowMap = document.getElementById('flow-map');
+  if (flowMap) flowMap.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Enter your flight details and click Calculate to see your optimal route</p>';
+  const breakdownList = document.getElementById('breakdown-list');
+  if (breakdownList) breakdownList.innerHTML = '';
+}
+
+// Reveal result box with actual data (after Calculate is pressed with valid info)
+function showResultData() {
+  const card = document.getElementById('total-time-card');
+  if (card) card.classList.add('calculated');
+}
+
+// Calculate arrival time
+function calculateArrivalTime() {
+  const departureTime = document.getElementById('departure-time').value;
+  
+  if (!departureTime) {
+    alert('Please enter your departure time');
+    return;
   }
   
-  .wait-times-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .total-value {
-    font-size: 2.5rem;
-  }
-  
-  .arrival-value {
-    font-size: 2rem;
-  }
+  updateProcessFlow();
 }
 
-/* Loading Animation */
-.loading {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
-  border-top-color: white;
-  animation: spin 1s ease-in-out infinite;
+// Update process flow
+function updateProcessFlow() {
+  const checkingBag = document.getElementById('checking-bag').checked;
+  const tsaPrecheck = document.getElementById('tsa-precheck').checked;
+  const departureTime = document.getElementById('departure-time').value;
+  const gate = document.getElementById('gate').value;
+  const terminal = document.getElementById('terminal').value;
+  
+  if (!departureTime) {
+    showResultPlaceholder();
+    return;
+  }
+  
+  showResultData();
+  
+  // Calculate times for each step
+  const steps = [];
+  let totalTime = 0;
+  
+  // Step 1: Parking/Walk to Terminal
+  const parkingTime = currentWaitTimes.parking || getWaitTime('parking');
+  steps.push({ name: 'Parking/Walk to Terminal', time: parkingTime, icon: 'fa-car' });
+  totalTime += parkingTime;
+  
+  // Step 2: Airport Shuttle (if needed)
+  const shuttleTime = currentWaitTimes.shuttle || getWaitTime('shuttle');
+  steps.push({ name: 'Airport Shuttle', time: shuttleTime, icon: 'fa-bus' });
+  totalTime += shuttleTime;
+  
+  // Step 3: Bag Check (if checking bag)
+  if (checkingBag) {
+    const bagTime = currentWaitTimes.bagCheck || getWaitTime('bagCheck');
+    steps.push({ name: 'Bag Check', time: bagTime, icon: 'fa-suitcase' });
+    totalTime += bagTime;
+  }
+  
+  // Step 4: Security
+  const securityTime = tsaPrecheck 
+    ? (currentWaitTimes.securityPrecheck || getWaitTime('securityPrecheck'))
+    : (currentWaitTimes.security || getWaitTime('security'));
+  steps.push({ 
+    name: tsaPrecheck ? 'TSA PreCheck' : 'Security Screening', 
+    time: securityTime, 
+    icon: 'fa-shield-alt' 
+  });
+  totalTime += securityTime;
+  
+  // Step 5: Walk to Gate
+  const walkTime = currentWaitTimes.walk || getWaitTime('walk');
+  // Add extra time if gate is far from security
+  const adjustedWalkTime = terminal && gate ? walkTime + Math.floor(Math.random() * 5) : walkTime;
+  steps.push({ 
+    name: `Walk to Gate ${gate || ''}`, 
+    time: adjustedWalkTime, 
+    icon: 'fa-walking' 
+  });
+  totalTime += adjustedWalkTime;
+  
+  // Add buffer time (15 minutes recommended)
+  const bufferTime = 15;
+  steps.push({ name: 'Buffer Time (Recommended)', time: bufferTime, icon: 'fa-clock' });
+  totalTime += bufferTime;
+  
+  // Render process flow
+  renderProcessFlow(steps);
+  
+  // Update total time
+  document.getElementById('total-time').textContent = `${totalTime} min`;
+  
+  // Calculate and display arrival time
+  document.getElementById('arrival-time').textContent = formatArrivalTime12h(
+    departureTime,
+    totalTime
+  );
+  
+  // Render breakdown
+  renderBreakdown(steps);
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+// Render process flow
+function renderProcessFlow(steps) {
+  const flowMap = document.getElementById('flow-map');
+  flowMap.innerHTML = '<div class="flow-steps"></div>';
+  const flowSteps = flowMap.querySelector('.flow-steps');
+  
+  steps.forEach((step, index) => {
+    const stepElement = document.createElement('div');
+    stepElement.className = 'flow-step';
+    if (index === 0) stepElement.classList.add('active');
+    
+    stepElement.innerHTML = `
+      <div class="flow-step-number">${index + 1}</div>
+      <div class="flow-step-content">
+        <div class="flow-step-name">
+          <i class="fas ${step.icon}"></i> ${step.name}
+        </div>
+        <div class="flow-step-time">${step.time} minutes</div>
+      </div>
+    `;
+    
+    flowSteps.appendChild(stepElement);
+    
+    // Add arrow between steps (except last)
+    if (index < steps.length - 1) {
+      const arrow = document.createElement('div');
+      arrow.className = 'flow-step-arrow';
+      arrow.innerHTML = '<i class="fas fa-arrow-down"></i>';
+      flowSteps.appendChild(arrow);
+    }
+  });
+}
+
+// Render breakdown
+function renderBreakdown(steps) {
+  const breakdownList = document.getElementById('breakdown-list');
+  breakdownList.innerHTML = '';
+  
+  steps.forEach((step, index) => {
+    const item = document.createElement('div');
+    item.className = 'breakdown-item';
+    
+    item.innerHTML = `
+      <div class="breakdown-item-name">
+        <span>${index + 1}.</span>
+        <i class="fas ${step.icon}"></i>
+        <span>${step.name}</span>
+      </div>
+      <div class="breakdown-item-time">${step.time} min</div>
+    `;
+    
+    breakdownList.appendChild(item);
+  });
+  
+  // Add total
+  const total = steps.reduce((sum, step) => sum + step.time, 0);
+  const totalItem = document.createElement('div');
+  totalItem.className = 'breakdown-item';
+  totalItem.style.borderTop = '2px solid var(--aa-navy)';
+  totalItem.style.marginTop = '1rem';
+  totalItem.style.paddingTop = '1rem';
+  totalItem.style.fontWeight = '700';
+  
+  totalItem.innerHTML = `
+    <div class="breakdown-item-name">
+      <span>Total Time</span>
+    </div>
+    <div class="breakdown-item-time" style="font-size: 1.3rem;">${total} min</div>
+  `;
+  
+  breakdownList.appendChild(totalItem);
+}
+
+// Simulate real-time updates (in production, this would fetch from APIs)
+function fetchRealTimeData() {
+  // This would make API calls to:
+  // - Airport security wait time APIs
+  // - Airport operations APIs
+  // - Historical data for predictions
+  
+  // For now, we simulate with realistic variations
+  updateWaitTimes();
 }
