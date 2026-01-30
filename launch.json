@@ -1,0 +1,11 @@
+{
+    "configurations": [
+    {
+        "name": "Launch Chrome",
+        "request": "launch",
+        "type": "chrome",
+        "url": "file:///${workspaceFolder}/american-airlines-forecast.html",
+        "webRoot": "${workspaceFolder}"
+    }
+    ]
+}
